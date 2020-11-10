@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+
+  root 'sessions#index'
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+
+  get '/signup', to: 'users#new'
+  #don't need another route for post because it's already included in the routes 
+
   resources :reviews
   resources :resources
   resources :topics
