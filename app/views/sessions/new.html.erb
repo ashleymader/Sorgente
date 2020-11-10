@@ -1,15 +1,21 @@
-<h1>Sorgente Signup</h1>
+<h1>Sorgente Login</h1>
 
-<%= form_for(@user) do |f|%>
+<!-- change the color of this flash -->
+<p><%= flash[:error] %></p> 
+
+<%= form_for(:user) do |f|%>
     <%= f.label :username %>
     <%= f.text_field :username %>
 
+<!-- do we even need email to login?  
+
     <%= f.label :email %>
     <%= f.email_field :email %>
+-->
 
     <%= f.label :password %>
     <%= f.password_field :password %>
 
-    <%= f.submit "Signup!" %>
+    <%= f.submit "Login!" %>
 
 <%end%>

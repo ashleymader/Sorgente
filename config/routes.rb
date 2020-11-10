@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   #don't need another route for post because it's already included in the routes 
 
+  delete '/logout', to: 'sessions#destroy'
+
+  
   resources :reviews
   resources :resources
   resources :topics
