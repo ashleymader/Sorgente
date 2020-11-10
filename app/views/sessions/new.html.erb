@@ -4,18 +4,19 @@
 <p><%= flash[:error] %></p> 
 
 <%= form_for(:user) do |f|%>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-
+    <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+    </div>
 <!-- do we even need email to login?  
 
     <%= f.label :email %>
     <%= f.email_field :email %>
 -->
-
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-
+    <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+    </div>
     <%= f.submit "Login!" %>
 
 <%end%>
