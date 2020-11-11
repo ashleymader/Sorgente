@@ -21,6 +21,10 @@ class ResourcesController < ApplicationController
         @resource = Resource.find_by(params[:id])
     end
 
+    def index
+        @resources = Resource.all
+    end
+
     private 
 
     def resource_params 

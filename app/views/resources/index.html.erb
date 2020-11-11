@@ -1,0 +1,8 @@
+<h1>All Resources</h1>
+
+<% @resources.each do |r| %>
+<p>
+<a href="<%= r.url %>">Resource URL LINK HERE </a>
+<%= r.description %>
+</p>
+<% end %>
