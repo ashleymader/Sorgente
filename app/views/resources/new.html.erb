@@ -1,18 +1,18 @@
-<h1>Add a New Resource!</h1>
+<h1>Create a New Resource!</h1>
 
-<%= form_for(@resource) do |f|%>
+<%= form_for @resource do |f|%>
     <div>
         <%= f.label :url %>
         <%= f.text_field :url %>
     </div>
     <div>
         <%= f.label :description %>
-        <%= f.text_area :description %>
+        <%= f.text_field :description %>
     <div>
 
     <p>Select Topic</p>
     <div>
-        <%= f.collection_select :topic_id, Topic.all, :id, :name %>
+        <%= f.collection_select :topic_id, Topic.all, :id, :name, include_blank: 'Select One' %>
     </div>
     <p>Create a Topic Not Listed</p>
     <div>
@@ -22,7 +22,7 @@
         <% end %>
     </div>
 
-    <%= f.submit "Submit Resource!" %>
+    <%= f.submit %>
 
 <% end %>
 
