@@ -2,7 +2,6 @@
 
 <% @resources.each do |r| %>
 <p>
-<a href="<%= r.url %>">Resource URL LINK HERE </a>
-<%= r.description %>
+<%= link_to "NEED TO ADD RESOURCE NAME OR SOMETHING HERE", resource_path(r.id)%> -- <%= link_to "Add Review", new_resource_review_path(r.id)%>
 </p>
 <% end %>

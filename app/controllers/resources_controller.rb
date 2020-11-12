@@ -12,13 +12,13 @@ class ResourcesController < ApplicationController
         if @resource.save
             redirect_to resource_path(@resource)
         else  
-            @resource.build_topic
+            # @resource.build_topic
             render :new
         end
     end
 
     def show
-        @resource = Resource.find_by(params[:id])
+        @resource = Resource.find_by_id(params[:id])
     end
 
     def index
