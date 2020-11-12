@@ -4,7 +4,6 @@
     <title>Sorgente</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,6 +11,8 @@
   <div> 
     <%= link_to "Logout", logout_path, method: :delete %>
     <%= link_to "Add Resource", new_resource_path %>
+    <%= link_to "All Resources", resources_path %>
+    <%= link_to "All Topics", topics_path %>
   </div>
   <body>
     <%= yield %>
