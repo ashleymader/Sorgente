@@ -1,0 +1,11 @@
+<h1>TOPIC SHOW PAGE</h1>
+
+<h3>All <%= @topic.name %> Resources </h3>
+<ol>
+<li>
+<% @resources.each do |r| %>
+<%= r.url %>
+<%= r.description %>
+</li>
+</ol>
+<% end %>
