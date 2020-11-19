@@ -1,6 +1,14 @@
 <h1>Create a New Resource!</h1>
 
+<%= render partial: 'layouts/errors', locals: {object: @resource} %>
+
 <%= form_for @resource do |f|%>
+
+    <div>
+        <%= f.label :site_name %>
+        <%= f.text_field :site_name %>
+    </div> 
+
     <div>
         <%= f.label :url %>
         <%= f.text_field :url %>
