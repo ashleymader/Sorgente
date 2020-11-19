@@ -4,9 +4,9 @@
 <% @reviews.each do |r| %>
 <!-- need to add resource name here and in schema in place of url-->
 <li> <%=r.resource.url %>
-<%=r.title %>
- <%=r.comment %>
- <%=r.stars %> 
+<%=r.title %> --
+ <%=r.comment %> --
+ <%=r.stars %> /5 stars
  </li>
 </ul>
 <% end %>

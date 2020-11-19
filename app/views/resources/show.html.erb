@@ -1,5 +1,5 @@
 <h1>Resource Show Page </h1>
 
-<a href="<%= @resource.url %>">Resource URL LINK HERE </a>
+<%= link_to @resource.site_name, @resource.url %>
 <%= @resource.description %>
 

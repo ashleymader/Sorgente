@@ -4,7 +4,7 @@
 <ol>
 <li>
 <% @resources.each do |r| %>
-<%= r.url %>
+<%= link_to r.site_name, r.url %> --
 <%= r.description %>
 </li>
 </ol>

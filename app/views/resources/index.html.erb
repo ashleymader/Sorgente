@@ -2,6 +2,9 @@
 
 <% @resources.each do |r| %>
 <p>
-<%= link_to "NEED TO ADD RESOURCE NAME OR SOMETHING HERE", resource_path(r.id)%> -- <%= link_to "Add Review", new_resource_review_path(r.id)%>
+<%= link_to r.site_name,  resource_path(r.id)%>
+</br>
+<%= r.description %>
+<%= link_to "Add Review", new_resource_review_path(r.id)%>
 </p>
 <% end %>
