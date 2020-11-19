@@ -8,6 +8,7 @@ class Resource < ApplicationRecord
   validates :url, presence: true
   validates :description, presence: true
   
+  
   def topic_attributes=(attributes)
     self.topic = Topic.find_or_create_by(attributes) if !attributes['name'].empty?
     self.topic

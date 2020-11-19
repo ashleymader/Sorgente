@@ -12,14 +12,14 @@ class ResourcesController < ApplicationController
         if @resource.save
             redirect_to resource_path(@resource)
         else  
-            # @resource.build_topic
+            #needed to add this line to keep the topic build field on new resource form
+            @resource.build_topic
             render :new
         end
     end
 
     def show
         @resource = Resource.find_by_id(params[:id])
-        binding.pry
     end
 
     def index
