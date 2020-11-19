@@ -10,8 +10,11 @@ class ReviewsController < ApplicationController
     end
 
     def new 
-        @resource = Resource.find_by_id(params[:resource_id])
-        @review = @resource.reviews.build
+        if @resource = Resource.find_by_id(params[:resource_id])
+            @review = @resource.reviews.build
+        else  
+            @review = Review.new
+        end
     end
 
     def create 

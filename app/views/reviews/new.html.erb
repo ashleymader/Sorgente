@@ -1,4 +1,12 @@
-<h1>Add Review for **NEED TO ADD RESOURCE NAME??** </h1>
+<!--checking to see if params has a resource_id, if it does it renders the name of the resource, else renders the create review -->
+<% if params[:resource_id] %>
+    <h1>Add Review for <%= @review.resource.site_name %></h1>
+<% else %>
+    <h1> Create Review </h1> 
+<% end %>
+
+<!-- we are rendering the partial and setting the object to the local variable for the form we are using -->
+<%= render partial: 'layouts/errors', locals: {object: @review} %>
 
 <%= form_for @review do |f|%>
     <div>
