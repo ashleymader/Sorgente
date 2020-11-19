@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_181122) do
+ActiveRecord::Schema.define(version: 2020_11_19_132709) do
 
   create_table "resources", force: :cascade do |t|
     t.string "url"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_181122) do
     t.integer "topic_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "site_name"
     t.index ["topic_id"], name: "index_resources_on_topic_id"
     t.index ["user_id"], name: "index_resources_on_user_id"
   end
