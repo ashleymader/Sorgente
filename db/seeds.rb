@@ -37,22 +37,26 @@ DatabaseCleaner.clean_with(:truncation)
 
 
 #--resources--#
-    resource_1 = Resource.create(url: Faker::Internet.url, 
+    resource_1 = Resource.create(site_name: "Site 1 Name", 
+        url: Faker::Internet.url, 
         description: "Resource 1 description", 
         user_id: user_1.id, 
         topic_id: topic_1.id)
 
-    resource_2 = Resource.create(url: Faker::Internet.url, 
+    resource_2 = Resource.create(site_name: "Site 2 Name", 
+        url: Faker::Internet.url, 
         description: "Resource 2* description", 
         user_id: user_2.id, 
         topic_id: topic_2.id)
 
-    resource_3 = Resource.create(url: Faker::Internet.url, 
+    resource_3 = Resource.create(site_name: "Site 3 Name", 
+        url: Faker::Internet.url, 
         description: "Resource 3! description", 
         user_id: user_3.id, 
         topic_id: topic_3.id)
 
-    resource_4 = Resource.create(url: Faker::Internet.url, 
+    resource_4 = Resource.create(site_name: "Site 4 Name", 
+        url: Faker::Internet.url, 
         description: "Resource !!!4 description", 
         user_id: user_1.id, 
         topic_id: topic_4.id)
