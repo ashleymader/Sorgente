@@ -19,6 +19,7 @@ class ResourcesController < ApplicationController
 
     def show
         @resource = Resource.find_by_id(params[:id])
+        binding.pry
     end
 
     def index
@@ -28,7 +29,7 @@ class ResourcesController < ApplicationController
     private 
 
     def resource_params 
-        params.require(:resource).permit(:url, :description, :topic_id, topic_attributes: [:name])
+        params.require(:resource).permit(:site_name, :url, :description, :topic_id, topic_attributes: [:name])
     end
 
 
