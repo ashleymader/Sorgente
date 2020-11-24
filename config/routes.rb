@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy'
 
+  get 'auth/google_oauth2/callback', to: 'sessions#googleauth'
+  # get auth/failure, to: redirect 
+  get 'auth/github/callback', to: 'sessions#github'
 
+  
   resources :reviews
   resources :resources do 
     resources :reviews, only: [:new, :index]
