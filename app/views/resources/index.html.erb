@@ -1,10 +1,25 @@
 <h1>All Resources</h1>
 
 <% @resources.each do |r| %>
-<p>
-<%= link_to r.site_name,  resource_path(r.id)%>
-</br>
-<%= r.description %>
-<%= link_to "Add Review", new_resource_review_path(r.id)%>
-</p>
+<%# <p> %>
+<%# <%= link_to r.site_name,  resource_path(r.id)%> 
+<%# </br> %>
+<%# <%= r.description %> 
+
+<%# </p> %>
+
+<% object = LinkThumbnailer.generate(r.url)%>
+  <h2>  <%= object.title %> </h2>
+   <div> 
+    <a href="<%= r.url %>"> <img src="<%= object.images.first %>"/></a> 
+   </div>
+   
+    <p> <%= object.description %> </p>
+
+    <div> 
+        <a href="<%= r.url %>"> <img src="<%= object.favicon %>"/></a> 
+   </div>
+
+
+    <%= link_to "Add Review", new_resource_review_path(r.id)%>
 <% end %>
