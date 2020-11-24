@@ -15,11 +15,5 @@
    </div>
    
     <p> <%= object.description %> </p>
-
-    <div> 
-        <a href="<%= r.url %>"> <img src="<%= object.favicon %>"/></a> 
-   </div>
-
-
     <%= link_to "Add Review", new_resource_review_path(r.id)%>
 <% end %>

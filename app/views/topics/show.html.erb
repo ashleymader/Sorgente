@@ -1,11 +1,9 @@
 <h1>TOPIC SHOW PAGE</h1>
 
-<h3>All <%= @topic.name %> Resources </h3>
-<ol>
-<li>
+<h1>All <%= @topic.name %> Resources </h1>
+
 <% @resources.each do |r| %>
-<%= link_to r.site_name, r.url %> --
-<%= r.description %>
-</li>
-</ol>
+<h2><%= link_to r.site_name, r.url %> </h2> 
+<!-- need to add avg user rating here-->
+<p><%= r.description %></p>
 <% end %>
