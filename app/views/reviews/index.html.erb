@@ -1,10 +1,21 @@
-<h1>All Reviews</h1>
+<% if params[:resource_id] %>
+    <h1>All Reviews for <%= @resource.site_name %></h1>
+<% else %>
+    <h1> All Reviews </h1> 
+<% end %>
+
+
 
 <ul>
 <% @reviews.each do |r| %>
 <!-- need to add resource name here and in schema in place of url-->
-<li> <%=link_to r.resource.site_name, r.resource.url %>
-<%=r.title %> --
+<% object = LinkThumbnailer.generate(r.resource.url)%>
+<div> 
+    <a href="<%= r.resource.url %>"> <img src="<%= object.images.first %>"/></a> 
+</div>
+<%= @user%>
+<li> 
+<%= binding.pry%>
  <%=r.comment %> --
  <%=r.stars %> /5 stars
  </li>

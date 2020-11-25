@@ -1,13 +1,13 @@
 <h1>All Resources</h1>
 
 <% @resources.each do |r| %>
-<%# <p> %>
-<%# <%= link_to r.site_name,  resource_path(r.id)%> 
-<%# </br> %>
-<%# <%= r.description %> 
-
-<%# </p> %>
-
+<p>
+<%= link_to r.site_name,  resource_reviews_path(r.id)%> 
+</br>
+<%= r.description %>
+<%= %>
+ 
+<!-- 
 <% object = LinkThumbnailer.generate(r.url)%>
   <h2>  <%= object.title %> </h2>
    <div> 
@@ -15,5 +15,7 @@
    </div>
    
     <p> <%= object.description %> </p>
+        -->
     <%= link_to "Add Review", new_resource_review_path(r.id)%>
+
 <% end %>
