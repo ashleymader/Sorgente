@@ -27,7 +27,6 @@ class SessionsController < ApplicationController
     def googleauth 
         #instantiating user to class method in user model. Sending in argument of auth so user model can see the omniauth hash
         @user = User.create_session_googleauth(auth)
-        binding.pry
         #setting session 
         session[:user_id] = @user.id
         redirect_to user_path(@user)
@@ -37,7 +36,6 @@ class SessionsController < ApplicationController
         
         #instantiating user to class method in user model. Sending in argument of auth so user model can see the omniauth hash
         @user = User.create_session_gitauth(auth)
-        binding.pry
         #setting session 
         session[:user_id] = @user.id
         redirect_to user_path(@user)
