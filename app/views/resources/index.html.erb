@@ -1,21 +1,19 @@
 <h1>All Resources</h1>
 
+<%= form_tag("/resources", method: 'get') do %>
+<!-- get request to keep params in the url to make search shareable and also because we already post to /resources when we create a new one -->
+    <%= label_tag(:q, "Search for:") %>  
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Find It!") %>
+<% end %>
+
 <% @resources.each do |r| %>
-<p>
+<br />
 <%= link_to r.site_name,  resource_reviews_path(r.id)%> 
 </br>
-<%= r.description %>
+<%= r.description %> 
 <%= %>
- 
-<!-- 
-<% object = LinkThumbnailer.generate(r.url)%>
-  <h2>  <%= object.title %> </h2>
-   <div> 
-    <a href="<%= r.url %>"> <img src="<%= object.images.first %>"/></a> 
-   </div>
-   
-    <p> <%= object.description %> </p>
-        -->
+
     <%= link_to "Add Review", new_resource_review_path(r.id)%>
 
 <% end %>

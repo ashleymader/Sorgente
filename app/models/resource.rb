@@ -30,4 +30,11 @@ class Resource < ApplicationRecord
     " #{site_name} -- #{topic.name}"
   end 
 
+  def self.search(params)
+    #sanitizing search query with ? and feeding in argument of params
+    #LIKE and interpolating % % looks for site_names that contain the params search query 
+      where("LOWER(site_name) LIKE :term OR LOWER(description) LIKE :term", term: "%#{params}%")
+  end
+
+
 end

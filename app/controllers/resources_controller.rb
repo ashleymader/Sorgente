@@ -23,7 +23,12 @@ class ResourcesController < ApplicationController
     end
 
     def index
-        @resources = Resource.all
+        #change to a try method? 
+        if params[:q] && !params[:q].empty?
+            @resources = Resource.search(params[:q].downcase)
+        else 
+            @resources = Resource.order_by_rating
+        end
     end
 
     private 
