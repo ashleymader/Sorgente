@@ -1,18 +1,21 @@
+<br/>
 <h1>All Resources</h1>
 
-<%= form_tag("/resources", method: 'get') do %>
-<!-- get request to keep params in the url to make search shareable and also because we already post to /resources when we create a new one -->
-    <%= label_tag(:q, "Search for:") %>  
-    <%= text_field_tag(:q) %>
-    <%= submit_tag("Find It!") %>
-<% end %>
-
-<% @resources.each do |r| %>
+<br / >
+    <%= form_tag("/resources", method: 'get') do %>
+    <!-- get request to keep params in the url to make search shareable and also because we already post to /resources when we create a new one -->
+        <%= label_tag(:q, "Search for:") %>  
+        <%= text_field_tag(:q) %>
+        <%= submit_tag("Find It!") %>
+    <% end %>
 <br />
-<%= link_to r.site_name,  resource_reviews_path(r.id)%> 
-</br>
-<%= r.description %> 
-<%= %>
+<ul>
+    <% @resources.each do |r| %>
+    <li><%= link_to r.site_name,  resource_reviews_path(r.id)%> </li>
+        <ul>
+            <li><%= r.description %> </li>
+        </ul>
+
 
     <%= link_to "Add Review", new_resource_review_path(r.id)%>
 

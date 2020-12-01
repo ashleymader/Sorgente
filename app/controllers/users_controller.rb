@@ -15,8 +15,8 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by_id(params[:id])
-        @resources = @user.resources
+        # @user = User.find_by_id(params[:id])
+        # @resources = @user.resources
     end
 
 private 

@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-right: 1.5rem;
+    background-color: lightskyblue;
+  }
+  .starter-template {
+    padding: 3rem 3.5rem;
+    text-align: center;
+  }
