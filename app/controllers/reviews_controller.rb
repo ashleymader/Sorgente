@@ -3,7 +3,6 @@ class ReviewsController < ApplicationController
     def index 
         if @resource = Resource.find_by_id(params[:resource_id])
             @reviews = @resource.reviews
-            
         else  
             @reviews = Review.all 
         end
