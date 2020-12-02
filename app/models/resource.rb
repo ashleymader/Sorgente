@@ -4,13 +4,15 @@ class Resource < ApplicationRecord
   has_many :reviews 
   has_many :users, through: :reviews #users who reviewed the resource 
 
-  validates :site_name, presence: true
+  # validates :site_name, presence: true
   validates :url, presence: true
-  validates :description, presence: true
+  # validates :description, presence: true
   validate :not_dupe, on: :create
 
   scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(stars) desc')} #will use this in a dropdown filter? 
   
+
+
   def topic_attributes=(attributes)
     self.topic = Topic.find_or_create_by(attributes) if !attributes['name'].empty?
     self.topic

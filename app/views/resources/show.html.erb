@@ -1,11 +1,41 @@
-<h1>Resource Show Page </h1>
+<div class="jumbotron">
+    <div class="container">
+        <% object = LinkThumbnailer.generate(@resource.url) %>
+            <h1 class="display-3"> <%= object.title %> </h1>
+                <p> <%= object.description %> </p>
+        <%= link_to @resource.url do %>
+            <button type="button" class="btn btn-primary">Learn More</button>
+        <% end %>
+        <p>Added by: <%= link_to @resource.user.username, user_path(@resource.user)%> </p>
+    </div>
+</div>
 
-<br />
-<h3><%= link_to @resource.site_name, @resource.url %></h3>
-<h4> <%= @resource.description %> </h4>
+<div class="container">
+    <div class="row">
+        <% @resource.reviews.each do |r| %>
+            <div class="col-md-4">
+                 <h2 class="card-title"><%= r.title %></h2>
+                    <p class="card-text"><%= r.comment %>
+                    </p>
+                        <p class="card-text"><%= r.stars %>
+                        </p>
+            </div>
+        <% end %>
+    </div>
+</div> 
+
+<div class="container">
+    <div class="row">
+        <% object = LinkThumbnailer.generate(@resource.url) %>
+            <div class="col-md-4">
+                 <h2> <%= object.title %></h2>
+                    <p> <%= object.description %> </p>
+                         <a href="<%=@resource.url%>"><img src="<%= object.images.first %>"/>
+            </div>
+    </div>
+</div> 
 
 
-<p>Added by: <%= link_to @resource.user.username, user_path(@resource.user)%> </p>
 
 <% if @resource.user == current_user %>
     <%= link_to edit_resource_path(@resource) do %>
