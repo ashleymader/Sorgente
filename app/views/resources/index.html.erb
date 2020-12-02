@@ -10,7 +10,7 @@
 <br />
 <ul>
     <% @resources.each do |r| %>
-    <h3><li><%= link_to r.site_name,  resource_reviews_path(r.id)%> </li></h3>
+    <h3><li><%= link_to r.site_name,  resource_path(r.id)%> </li></h3>
         <ul>
             <li><%= r.description %> </li>
         </ul>

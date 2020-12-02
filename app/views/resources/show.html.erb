@@ -1,7 +1,23 @@
 <h1>Resource Show Page </h1>
 
+<br />
+<h3><%= link_to @resource.site_name, @resource.url %></h3>
+<h4> <%= @resource.description %> </h4>
 
-<%= link_to @resource.site_name, @resource.url %>
-<%= @resource.description %>
 
-<%= link_to "Edit", edit_resource_path(@resource) if @resource.user == current_user%>
+<p>Added by: <%= link_to @resource.user.username, user_path(@resource.user)%> </p>
+
+<% if @resource.user == current_user %>
+    <%= link_to edit_resource_path(@resource) do %>
+        <button type="button" class="btn btn-primary">Edit Resource</button>
+    <% end %>
+<%end%>
+
+
+<% user_review = @resource.reviews.find_by(user_id: current_user.id) %>
+ 
+<% if !user_review %>
+    <%= link_to new_resource_review_path(@resource) do%>
+        <button type="button" class="btn btn-primary">Add Review</button>
+    <%end%>
+<% end %>

@@ -3,9 +3,21 @@
 
 
 <br/ >
-<h3> Checkout resources you've submitted: </h3>
+<h3> Resources Submitted: </h3>
 <ul>
     <% @user.resources.each do |r| %>
    <li> <%= link_to r.site_name, resource_path(r.id)%>
     <% end %>
 </ul>
+
+<h3> Resources Reviewed: </h3>
+<ul>
+
+    <% @user.reviews.each do |r| %>
+  
+   <li> <%= link_to r.title, review_path(r.id)%> -- <%= r.resource.site_name %>
+   <br/>
+   <%= r.created_at.strftime("%B %d %Y,%l:%M%P") %>
+    <% end %>
+</ul>
+
