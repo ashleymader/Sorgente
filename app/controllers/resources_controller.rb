@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
 
+    before_action :set_resource, only:[:show, :edit, :update]
 
     def new 
         @resource = Resource.new 
@@ -19,15 +20,29 @@ class ResourcesController < ApplicationController
     end
 
     def show
-        @resource = Resource.find_by_id(params[:id])
+        
     end
 
     def index
-        #change to a try method? 
+        #change to a try method?   
+        
         if params[:q] && !params[:q].empty?
             @resources = Resource.search(params[:q].downcase)
         else 
             @resources = Resource.order_by_rating
+        end
+
+    end
+
+    def edit
+
+    end
+
+    def update 
+        if @resource.update(resource_params)
+            redirect_to resource_path(@resource)
+        else  
+            render :edit
         end
     end
 
@@ -37,5 +52,9 @@ class ResourcesController < ApplicationController
         params.require(:resource).permit(:site_name, :url, :description, :topic_id, topic_attributes: [:name])
     end
 
+    def set_resource 
+        @resource = Resource.find_by_id(params[:id])
+        redirect_to resources_path if !@resource
+    end
 
 end

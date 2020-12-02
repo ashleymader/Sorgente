@@ -7,7 +7,7 @@ class Resource < ApplicationRecord
   validates :site_name, presence: true
   validates :url, presence: true
   validates :description, presence: true
-  validate :not_dupe
+  validate :not_dupe, on: :create
 
   scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(stars) desc')} #will use this in a dropdown filter? 
   
@@ -24,6 +24,11 @@ class Resource < ApplicationRecord
 
   def self.a_z 
     order(:site_name)
+  end
+
+  def not_reviewed
+    # find all resources and check to see if user (by their id) has created a review. If they have, dont return those resources in the collection to choose from 
+    # if Resource.find_by
   end
 
   def site_name_and_topic 
