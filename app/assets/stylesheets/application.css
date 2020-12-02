@@ -14,11 +14,6 @@
  *= require_self
  */
 
- body {
- 
-    background-color: lightskyblue;
-  }
-  .starter-template {
-    padding: 3rem 3.5rem;
-    text-align: center;
-  }
+/*
+ *= require font-awesome
+ */
