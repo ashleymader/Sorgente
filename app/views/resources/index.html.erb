@@ -1,4 +1,3 @@
-
 <h1>All Resources</h1>
 
 <br / >
@@ -11,12 +10,32 @@
 <br />
 <ul>
     <% @resources.each do |r| %>
-    <li><%= link_to r.site_name,  resource_reviews_path(r.id)%> </li>
+    <h3><li><%= link_to r.site_name,  resource_reviews_path(r.id)%> </li></h3>
         <ul>
             <li><%= r.description %> </li>
         </ul>
-
-
-    <%= link_to "Add Review", new_resource_review_path(r.id)%>
-
+    <div >
+        <% if r.user == current_user %>
+            <%= link_to edit_resource_path(r.id) do%>
+                <button type="button" class="btn btn-primary">Edit Resource</button>
+            <%end%>
+        <% end %>
+       
+        <% user_review = r.reviews.find_by(user_id: current_user.id) %>
+        
+ 
+            <% if !user_review %>
+                <%= link_to new_resource_review_path(r.id) do%>
+                    <button type="button" class="btn btn-primary">Add Review</button>
+                <%end%>
+            <% else %>
+            
+                <!-- # link_to edit_resource_review_path(user_review.id) do
+                    <button type="button" class="btn btn-primary">Edit Review</button>
+     
+                <!-- # link_to edit_resource_review_path(user_review.id) do -->
+                  
+                <!-- #> end -->
+            <% end %>
+    </div> 
 <% end %>

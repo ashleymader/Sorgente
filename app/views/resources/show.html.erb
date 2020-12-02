@@ -4,3 +4,4 @@
 <%= link_to @resource.site_name, @resource.url %>
 <%= @resource.description %>
 
+<%= link_to "Edit", edit_resource_path(@resource) if @resource.user == current_user%>
