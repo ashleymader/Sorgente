@@ -29,9 +29,12 @@ class ReviewsController < ApplicationController
         @review = Review.find_by_id(params[:id])
     end
 
+
     private 
 
     def review_params 
         params.require(:review).permit(:resource_id, :stars, :comment, :title )
     end
+
+
 end

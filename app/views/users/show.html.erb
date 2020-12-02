@@ -1,11 +1,11 @@
 
-  <h1>Hello, <%= current_user.username %>!</h1>
+  <h1>Hello, <%= @user.username %>!</h1>
 
 
 <br/ >
 <h3> Checkout resources you've submitted: </h3>
 <ul>
-    <% current_user.resources.each do |r| %>
+    <% @user.resources.each do |r| %>
    <li> <%= link_to r.site_name, resource_path(r.id)%>
     <% end %>
 </ul>
