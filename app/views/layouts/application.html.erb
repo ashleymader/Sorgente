@@ -15,30 +15,33 @@
     
     
       <div> 
-      <% if logged_in? %>
-        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" href="#">Sorgente</a>
+        <% if logged_in? %>
+          <nav class="navbar navbar-light bg-light" >
+          <a class="navbar-brand" href="#">Sorgente</a>
   <!-- Navbar content -->
+            
+            <li><%= link_to "Home", user_path(current_user.id)%>
+            <li><%= link_to "Logout", logout_path, method: :delete %> </li>
+            <li><%= link_to "Add Resource", new_resource_path %></li> 
+            <li><%= link_to "All Resources", resources_path %> </li>
+            <li><%= link_to "All Topics", topics_path %></li> 
+            <li><%= link_to "All Reviews", reviews_path %> </li>
+            <li><%= link_to "Write a New Review", new_review_path %>
+          
+        <% else %>
         
-          <li><%= link_to "Home", user_path(current_user.id)%>
-          <li><%= link_to "Logout", logout_path, method: :delete %> </li>
-          <li><%= link_to "Add Resource", new_resource_path %></li> 
-          <li><%= link_to "All Resources", resources_path %> </li>
-          <li><%= link_to "All Topics", topics_path %></li> 
-          <li><%= link_to "All Reviews", reviews_path %> </li>
-          <li><%= link_to "Write a New Review", new_review_path %>
-        
-      <% else %>
-        
-      <%end%>
+        <%end%>
         </nav>
       </div>
 
-  <div class="container">
+ 
     <body>
-    <%= yield %> 
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+      <div class="container">
+        <%= yield %>
+      </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     </body>
-  </div>
+
 </html>

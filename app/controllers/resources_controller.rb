@@ -9,6 +9,9 @@ class ResourcesController < ApplicationController
 
     def create 
         @resource = Resource.new(resource_params)
+        object = LinkThumbnailer.generate(@resource.url)
+        @resource.site_name = object.title
+        @resource.description = object.description
         @resource.user_id = session[:user_id]
         if @resource.save
             redirect_to resource_path(@resource)

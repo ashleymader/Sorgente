@@ -4,19 +4,36 @@
     <h1> All Reviews </h1> 
 <% end %>
 
+<!-- Container -->
+<div class="container">
+    <div class="row"> 
+        <% @reviews.each do |r| %>
+        <!-- Card -->
+        <div class="col-md-4 border-primary">
+            <div class="card h-100">
+            <!--Card image-->
+                <div class="view overlay">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
+                            alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
 
+                <!--Card content-->
+                <div class="card-body">
 
-<ul>
-<% @reviews.each do |r| %>
-<!-- need to add resource name here and in schema in place of url-->
-<% object = LinkThumbnailer.generate(r.resource.url)%>
-<div> 
-    <a href="<%= r.resource.url %>"> <img src="<%= object.images.first %>"/></a> 
+                        <!--Title-->
+                    <h4 class="card-title"><%= r.user.username%></h4>
+                        <!--Text-->
+                    <p class="card-text"><%= r.comment %></p>
+                    <p class="card-text"><%= r.stars %>/5 Stars</p>
+                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                    <button type="button" class="btn btn-secondary">Read more</button>
+                </div>
+            </div>
+        </div>
+        <!-- Card -->
+        <% end %>
+    </div>
 </div>
-
-<li> 
- <%=r.comment %> --
- <%=r.stars %> /5 stars
- </li>
-</ul>
-<% end %>
