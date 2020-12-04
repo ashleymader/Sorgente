@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+    before_action :set_review, only:[:show, :edit, :update]
+
     def index 
         if @resource = Resource.find_by_id(params[:resource_id])
             @reviews = @resource.reviews
@@ -26,9 +28,20 @@ class ReviewsController < ApplicationController
     end
 
     def show 
-        @review = Review.find_by_id(params[:id])
+ 
     end
 
+    def edit 
+     
+    end
+
+    def update    
+        if @review.update(review_params)
+            redirect_to review_path(@review)
+        else  
+            render :edit
+        end
+    end
 
     private 
 
@@ -36,5 +49,8 @@ class ReviewsController < ApplicationController
         params.require(:review).permit(:resource_id, :stars, :comment, :title )
     end
 
+    def set_review
+        @review = Review.find_by_id(params[:id])
+    end
 
 end
