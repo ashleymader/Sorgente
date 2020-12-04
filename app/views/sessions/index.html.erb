@@ -7,13 +7,17 @@
   </div>
 
 
+<div class="row">
+  <div class="class="col-6"">
+    <%= link_to login_path do %>
+      <button type="button" class="btn btn-primary">Login</button>
+    <% end %>
+    <%= link_to signup_path do %>
+      <button type="button" class="btn btn-primary">Signup</button>
+    <% end %>
+  </div>
+</div>
 
-  <ul>
-    <li><%= link_to "Login", login_path %></li>
-    <li><%= link_to "Signup", signup_path %></li>
-    <li><%= link_to "Sign in with Google", "/auth/google_oauth2"%></li>
-    <li><%= link_to "Sign in with GitHub", "/auth/github"%></li>
-  </ul>
 </body>
 
 
