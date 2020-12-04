@@ -2,20 +2,23 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-        <% object = LinkThumbnailer.generate(@resource.url) %>
+            <% object = LinkThumbnailer.generate(@resource.url) %>
             <h1 class="display-3"> <%= @resource.site_name %> </h1>
                 <p> <%= @resource.description %> </p>
             </div>
 
-        <% object = LinkThumbnailer.generate(@resource.url) %>
             <div class="col-md-6">
                 <a href="<%= @resource.url%>"><img src="<%= object.images.first %>" class="img-thumbnail" alt=""> 
             </div>
-        
-        <%= link_to @resource.url do %>
-            <button type="button" class="btn btn-primary">Learn More</button>
-        <% end %>
-        <p>Added by: <%= link_to @resource.user.username, user_path(@resource.user)%> </p>
+
+            <div>
+                <%= link_to @resource.url do %>
+                    <button type="button" class="btn btn-primary">Learn More</button>
+                <% end %>
+            </div>
+            
+            <div> <small class="text-muted">Added by: <%= link_to @resource.user.username, user_path(@resource.user)%></small>
+            </div>
         </div>
     </div>
 </div>

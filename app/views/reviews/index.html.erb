@@ -19,19 +19,26 @@
                         <div class="mask rgba-white-slight"></div>
                     </a>
                 </div>
-
                 <!--Card content-->
                 <div class="card-body">
 
                         <!--Title-->
-                    <h4 class="card-title"><%= r.user.username%></h4>
+                    <h4 class="card-title"><%= r.title%></h4>
                         <!--Text-->
                     <p class="card-text"><%= r.comment %></p>
                     <p class="card-text"><%= r.stars %>/5 Stars</p>
                     <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                    <%= link_to review_path(r.id) do%>
                     <button type="button" class="btn btn-secondary">Read more</button>
+                    <% end %>
                 </div>
+                     <!--Card footer-->
+                <div class="card-footer">
+                    <small class="text-muted">Submitted <%=r.created_at.strftime("%m/%d/%Y") %> by: <%= link_to r.user.username, user_path(r.user)%> </p></small>
+                </div>
+                        
             </div>
+            
         </div>
         <!-- Card -->
         <% end %>
