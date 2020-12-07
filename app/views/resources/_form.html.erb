@@ -3,8 +3,7 @@
 <%= form_for @resource do |f|%>
 
     <div>
-        <%= f.label :site_name %>
-        <%= f.text_field :site_name %>
+        <%= f.hidden_field :site_name %>
     </div> 
 
     <div>
@@ -12,8 +11,7 @@
         <%= f.text_field :url %>
     </div>
     <div>
-        <%= f.label :description %>
-        <%= f.text_field :description %>
+        <%= f.hidden_field :description %>
     </div>
 
     <p>Select Topic</p>
