@@ -9,17 +9,19 @@ class ResourcesController < ApplicationController
 
     def create 
         @resource = Resource.new(resource_params)
-        object = LinkThumbnailer.generate(@resource.url)
-        @resource.site_name = object.title
-        @resource.description = object.description
         @resource.user_id = session[:user_id]
-        if @resource.save
-            redirect_to resource_path(@resource)
-        else  
-            #needed to add this line to keep the topic build field on new resource form
-            @resource.build_topic
-            render :new
-        end
+            if @resource.valid?
+                object = LinkThumbnailer.generate(@resource.url)
+                @resource.site_name = object.title
+                @resource.description = object.description
+                    if @resource.save
+                        redirect_to resource_path(@resource)
+                    end
+            else  
+                #needed to add this line to keep the topic build field on new resource form
+                @resource.build_topic
+                render :new
+            end
     end
 
     def show
