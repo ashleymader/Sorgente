@@ -10,8 +10,9 @@ class ResourcesController < ApplicationController
     def create 
         @resource = Resource.new(resource_params)
         @resource.user_id = session[:user_id]
-            if @resource.valid?
+            if @resource.valid? #need this here because it won't check for url presence until after I need aceess to the info in it. Validation will be skipped otherwise
                 object = LinkThumbnailer.generate(@resource.url)
+                    #need to map here because I need access to the new @resource object via the new method call 
                 @resource.site_name = object.title
                 @resource.description = object.description
                     if @resource.save
