@@ -4,9 +4,9 @@ class ReviewsController < ApplicationController
 
     def index 
         if @resource = Resource.find_by_id(params[:resource_id])
-            @reviews = @resource.reviews
+            @reviews = @resource.reviews.includes(:user)
         else  
-            @reviews = Review.all.includes(:user) 
+            @reviews = Review.all.includes(:user)
         end
     end
 

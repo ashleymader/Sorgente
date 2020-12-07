@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find_by_id(params[:id])
+        @user = User.includes(reviews: :resource).find_by_id(params[:id])
         if !@user 
             redirect_to user_path(current_user)
             flash[:error] = "User with that ID does not exist"
