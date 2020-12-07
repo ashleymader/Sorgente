@@ -6,7 +6,12 @@ class TopicsController < ApplicationController
 
     def show
         @topic = Topic.find_by_id(params[:id])
-        @resources = @topic.resources
+        if !@topic
+            redirect_to topics_path
+            flash[:error] = "Topic with that ID does not exist"
+        else  
+            @resources = @topic.resources
+        end
     end
 
 end

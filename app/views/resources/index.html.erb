@@ -15,7 +15,7 @@
             <li><%= r.description %> </li>
         </ul>
     <div >
-        <% if r.user == current_user %>
+         <% if can? :update, r %>
             <%= link_to edit_resource_path(r.id) do%>
                 <button type="button" class="btn btn-primary">Edit Resource</button>
             <%end%>
@@ -29,13 +29,12 @@
                     <button type="button" class="btn btn-primary">Add Review</button>
                 <%end%>
             <% else %>
-            
-                <%= link_to edit_review_path(user_review.id) do %>
-                    <button type="button" class="btn btn-primary">Edit Review</button> 
+                 <% if can? :update, user_review %>
+                    <%= link_to edit_review_path(user_review.id) do %>
+                        <button type="button" class="btn btn-primary">Edit Review</button> 
+                    <% end %>
                 <% end %>
-                <!-- # link_to edit_resource_review_path(user_review.id) do -->
-                  
-                <!-- #> end -->
             <% end %>
     </div> 
-<% end %>
+    <% end %>
+</ul>

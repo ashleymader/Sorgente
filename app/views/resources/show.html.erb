@@ -37,7 +37,7 @@
     </div>
 </div> 
 
-<% if @resource.user == current_user %>
+ <% if can? :update, @resource %>
     <%= link_to edit_resource_path(@resource) do %>
         <button type="button" class="btn btn-primary">Edit Resource</button>
     <% end %>

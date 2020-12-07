@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
     
     helper_method :current_user, :logged_in?
 
+    rescue_from CanCan::AccessDenied do |exception|
+        flash[:error] = exception.message
+        redirect_to user_path(current_user)
+    end
+
+    rescue_from ActiveRecord::RecordNotFound do |exception|
+        flash[:error] = exception.message
+        redirect_to user_path(current_user)
+    end
+
     private 
 
     # tracks use across site 
