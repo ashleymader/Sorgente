@@ -9,30 +9,4 @@
 <!-- we are rendering the partial and setting the object to the local variable for the form we are using -->
 <%= render partial: 'layouts/errors', locals: {object: @review} %>
 
-<%= form_for @review do |f|%>
-    <% if params[:resource_id] %>
-        <%= f.hidden_field :resource_id %>
-    <% else %>
-    <div>
-        <%= f.label :resource_id %>
-        
-        <%= f.collection_select :resource_id, Resource.a_z , :id, :site_name_and_topic, include_blank: 'Select One' %>
-    </div>
-    <% end %>
-    <div>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-    </div>
-    <div>
-        <%= f.label :comment %>
-        <%= f.text_area :comment, size: "20x10" %>
-    </div>
-    <div>
-        <%= f.label :stars %>
-        <%= f.number_field :stars, min:0, max:5 %>
-    </div>
-        
-
-    <%= f.submit "Create Review", class: "btn btn-primary"%>
-
-<% end %>
+<%= render partial: 'form' %>
