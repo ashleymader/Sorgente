@@ -1,5 +1,5 @@
 class ResourcesController < ApplicationController
-
+    load_and_authorize_resource
     before_action :set_resource, only:[:show, :edit, :update]
 
     def new 

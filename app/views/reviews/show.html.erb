@@ -5,6 +5,8 @@
 <p> <%=@review.comment %></p>
 <p> <%=@review.stars %> </p>
 
-<%= link_to edit_review_path(@review.id) do %>
-    <button type="button" class="btn btn-primary">Edit Review</button> 
+<% if @review.user_id == current_user.id %>
+    <%= link_to edit_review_path(@review.id) do %>
+        <button type="button" class="btn btn-primary">Edit Review</button> 
+    <% end %>
 <% end %>

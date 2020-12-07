@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-
+    load_and_authorize_resource
     before_action :set_review, only:[:show, :edit, :update]
 
     def index 

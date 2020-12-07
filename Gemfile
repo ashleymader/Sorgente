@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+
+gem 'cancancan'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'

@@ -28,8 +28,6 @@ class Resource < ApplicationRecord
     order(:site_name)
   end
 
-
-
   def site_name_and_topic 
     " #{site_name} -- #{topic.name}"
   end 
