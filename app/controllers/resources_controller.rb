@@ -39,7 +39,7 @@ class ResourcesController < ApplicationController
         if params[:q] && !params[:q].empty?
             @resources = Resource.search(params[:q].downcase)
         else 
-            @resources = Resource.all
+            @pagy, @resources = pagy(Resource.all, items: 10)
         end
 
     end
@@ -54,6 +54,10 @@ class ResourcesController < ApplicationController
         else  
             render :edit
         end
+    end
+
+    def most_reviewed
+        @resources = Resource.most_reviewed
     end
 
     private 
