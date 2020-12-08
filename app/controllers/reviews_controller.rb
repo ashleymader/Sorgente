@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
         if @resource = Resource.find_by_id(params[:resource_id])
             @reviews = @resource.reviews.includes(:user)
         else  
-            @reviews = Review.all.includes(:user)
+            @reviews = Review.all.includes(:user, :resource)
         end
     end
 

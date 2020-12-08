@@ -1,8 +1,4 @@
-<% if params[:resource_id] %>
-    <h1>All Reviews for <%= @resource.site_name %></h1>
-<% else %>
-    <h1> All Reviews </h1> 
-<% end %>
+<h1><%= index_review_header %> </h1>
 
 <!-- Container -->
 <div class="container">
@@ -23,10 +19,15 @@
                 <div class="card-body">
 
                         <!--Title-->
-                    <h4 class="card-title"><%= r.title%></h4>
+                    <h4 class="card-title"><%= r.resource.site_name%></h4>
                         <!--Text-->
-                    <p class="card-text"><%= r.comment %></p>
-                    <p class="card-text"><%= r.stars %>/5 Stars</p>
+                    <p class="card-text"><%= truncate(r.comment) %></p>
+                    <% r.stars.to_i.times do%>
+                        <i class="fas fa-star" style="color:orange;"></i>
+                    <% end%>
+                    <% (5 - r.stars.to_i).times do %>
+                        <i class="far fa-star" style="color:orange;" ></i>
+                    <% end%>  
                     <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
                     <%= link_to review_path(r.id) do%>
                         <button type="button" class="btn btn-secondary">Read more</button>
