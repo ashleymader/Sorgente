@@ -26,7 +26,11 @@ class ResourcesController < ApplicationController
     end
 
     def show
-        
+        if rating = Review.where(resource_id: @resource).average(:stars)
+            @avg_rating = rating.round
+        else 
+            nil
+        end
     end
 
     def index
@@ -35,7 +39,7 @@ class ResourcesController < ApplicationController
         if params[:q] && !params[:q].empty?
             @resources = Resource.search(params[:q].downcase)
         else 
-            @resources = Resource.order_by_rating
+            @resources = Resource.all
         end
 
     end

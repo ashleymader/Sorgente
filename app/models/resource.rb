@@ -9,8 +9,9 @@ class Resource < ApplicationRecord
   # validates :description, presence: true
   validate :not_dupe, on: :create
 
-  scope :order_by_rating, -> {left_joins(:reviews).group(:id).order('avg(stars) desc')} #will use this in a dropdown filter? 
-  
+  #resource doesnt know about it's reviews so we need to join the tables. Since we want all resources and not just the ones reviewed, we use left joins. Grouping by ID enables us to group all Resources with the same ID together and then we can average the stars. 
+  scope :highest_rated, -> {left_joins(:reviews).group(:id).order('avg(stars) desc')} #will use this in a dropdown filter? 
+  scope :lowest_rated, -> {left_joins(:reviews).group(:id).order('avg(stars) asc')}
 
 
   def topic_attributes=(attributes)
@@ -29,7 +30,7 @@ class Resource < ApplicationRecord
   end
 
   def site_name_and_topic 
-    " #{site_name} -- #{topic.name}"
+    "#{site_name} -- #{topic.name}"
   end 
 
   def self.search(params)
@@ -37,6 +38,12 @@ class Resource < ApplicationRecord
     #LIKE and interpolating % % looks for site_names that contain the params search query 
       where("LOWER(site_name) LIKE :term OR LOWER(description) LIKE :term", term: "%#{params}%")
   end
+
+  def avg_rating 
+    
+
+  end
+
 
 
 end
