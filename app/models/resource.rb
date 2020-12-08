@@ -13,6 +13,9 @@ class Resource < ApplicationRecord
   scope :highest_rated, -> {left_joins(:reviews).group(:id).order('avg(stars) desc')} #will use this in a dropdown filter? 
   scope :lowest_rated, -> {left_joins(:reviews).group(:id).order('avg(stars) asc')}
 
+  scope :most_reviewed, -> {joins(:reviews).group(:id).order('count(resources.id)desc')}
+#get '/user_albums/reviewed_albums', to: 'user_albums#reviewed_albums_index', as: 'reviewed_albums'
+
 
   def topic_attributes=(attributes)
     self.topic = Topic.find_or_create_by(attributes) if !attributes['name'].empty?
@@ -35,13 +38,13 @@ class Resource < ApplicationRecord
 
   def self.search(params)
     #sanitizing search query with ? and feeding in argument of params
-    #LIKE and interpolating % % looks for site_names that contain the params search query 
+    #LOWER is to ensuring casing matches
+    #LIKE and interpolating % % looks for site_names or description that contain the params search query 
       where("LOWER(site_name) LIKE :term OR LOWER(description) LIKE :term", term: "%#{params}%")
   end
 
-  def avg_rating 
+  def most_reviewed 
     
-
   end
 
 
