@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # get auth/failure, to: redirect 
   get 'auth/github/callback', to: 'sessions#github'
 
+  get '/resources/most-reviewed', to: 'resources#most_reviewed'
   
   resources :reviews
   resources :resources do 

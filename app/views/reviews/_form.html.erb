@@ -5,7 +5,7 @@
     <div>
         <%= f.label :resource_id %>
         
-        <%= f.collection_select :resource_id, Resource.a_z , :id, :site_name_and_topic, include_blank: 'Select One' %>
+        <%= f.collection_select :resource_id, Resource.a_z.includes(:topic) , :id, :site_name_and_topic, include_blank: 'Select One' %>
     </div>
     <% end %>
     <div>
