@@ -43,8 +43,8 @@ class Resource < ApplicationRecord
       where("LOWER(site_name) LIKE :term OR LOWER(description) LIKE :term", term: "%#{params}%")
   end
 
-  def most_reviewed 
-    
+  def self.most_reviewed 
+    joins(:reviews).group(:id).order('count(resources.id)desc')
   end
 
 

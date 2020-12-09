@@ -1,6 +1,10 @@
 <h1>All Resources</h1>
 
-<br / >
+<br/ >
+<a href="resources/most-reviewed" class="btn btn-primary" role="button" aria-disabled="true">Most Reviewed</a> 
+<br/ >
+
+<br/ >
     <%= form_tag("/resources", method: 'get') do %>
     <!-- get request to keep params in the url to make search shareable and also because we already post to /resources when we create a new one -->
         <%= label_tag(:q, "Search for:") %>  
@@ -8,33 +12,8 @@
         <%= submit_tag("Find It!") %>
     <% end %>
 <br />
-<ul>
-    <% @resources.each do |r| %>
-    <h3><li><%= link_to r.site_name,  resource_path(r.id)%> </li></h3>
-        <ul>
-            <li><%= r.description %> </li>
-        </ul>
-    <div >
-         <% if can? :update, r %>
-            <%= link_to edit_resource_path(r.id) do%>
-                <button type="button" class="btn btn-primary">Edit Resource</button>
-            <%end%>
-        <% end %>
-       
-        <% user_review = r.reviews.find_by(user_id: current_user.id) %>
-        
-            
-            <% if !user_review %>
-                <%= link_to new_resource_review_path(r.id) do%>
-                    <button type="button" class="btn btn-primary">Add Review</button>
-                <%end%>
-            <% else %>
-                 <% if can? :update, user_review %>
-                    <%= link_to edit_review_path(user_review.id) do %>
-                        <button type="button" class="btn btn-primary">Edit Review</button> 
-                    <% end %>
-                <% end %>
-            <% end %>
-    </div> 
-    <% end %>
-</ul>
+
+<%= %>
+
+
+<%= render partial: 'resources_index'%>

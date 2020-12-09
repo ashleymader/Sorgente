@@ -55,7 +55,7 @@ class ResourcesController < ApplicationController
     end
 
     def most_reviewed
-        @resources = Resource.most_reviewed
+        @pagy, @resources = pagy(Resource.most_reviewed, items: 10)
     end
 
     private 
