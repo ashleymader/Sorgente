@@ -1,6 +1,6 @@
 <%= form_for @review do |f|%>
-    <% if params[:resource_id] %>
-        <%= f.hidden_field :resource_id %>
+    <% if @resource %>
+        <%= f.hidden_field :resource_id, value: @resource.id %>
     <% else %>
     <div>
         <%= f.label :resource_id %>
