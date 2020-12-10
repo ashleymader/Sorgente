@@ -1,24 +1,3 @@
-# README
+# Sorgene
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Fork and clone this repo to your local computer. Then run `bundle install`, `rake db:migrate` and `rake db:seed`. When ready, run `rails s` in your terminal and head over to `http://localhost:3000/`
