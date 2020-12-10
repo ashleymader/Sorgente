@@ -18,13 +18,13 @@ class ApplicationController < ActionController::Base
 
     # tracks use across site 
     def current_user 
-        @current_user || User.find_by_id(session[:user_id])
+        @user ||= User.find_by_id(session[:user_id])
         #limits calls to db by seeing if a current user is set, if not looks inside the sessions hash to find user_id and sets the currentuser. 
     end
 
     #boolean for if user is logged in. Hard truthy or falsey value 
     def logged_in?
-        !!session[:user_id]
+        !!current_user
     end
 
     #before action in app controller ensures they cannot view anything without logging in (unless displayed on main page or login/signup pages)

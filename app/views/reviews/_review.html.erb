@@ -17,7 +17,14 @@
                         <!--Text-->
                     <p class="card-text"><%= review.comment %></p>
 
-                    <%= render partial: 'stars', locals: {stars: review.stars.to_i} %>
+                    <!-- was going to insert the stars partial here but then it will render every time this partial renders instead of just once. -->
+                    <% review.stars.to_i.times do %>
+                        <i class="fas fa-star" style="color:orange;"></i>
+                    <% end%>
+                    <% (5 - review.stars.to_i).times do %>
+                        <i class="far fa-star" style="color:orange;" ></i>
+                    <% end%>  <%= review.stars %> out of 5
+                
                     <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
                     <%= link_to review_path(review.id) do%>
                         <button type="button" class="btn btn-secondary">Read more</button>

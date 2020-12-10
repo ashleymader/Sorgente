@@ -23,31 +23,4 @@
     </div>
 </div>
 
-    <% if @resource.avg_user_rating %>
-        <span class="heading">User Rating:</span>
-        <%= render partial: "reviews/stars", locals: { stars: @resource.avg_user_rating } %>
-    <% else %>
-        <p > Not yet rated </p>
-    <% end %>
-
-
- <% if can? :update, @resource %>
-    <%= link_to edit_resource_path(@resource) do %>
-        <button type="button" class="btn btn-primary">Edit Resource</button>
-    <% end %>
-<%end%>
-
-
-<% user_review = @resource.reviews.find_by(user_id: current_user.id) %>
- 
-<% if !user_review %>
-    <%= link_to new_resource_review_path(@resource) do%>
-        <button type="button" class="btn btn-primary">Add Review</button>
-    <%end%>
-<% end %>
-
-<% if @resource.reviews %>
-    <%= link_to resource_reviews_path(@resource.id) do%>
-        <button type="button" class="btn btn-primary">Read all Reviews</button>
-    <%end%>
-<% end %>
+<%= render partial: 'button' %>

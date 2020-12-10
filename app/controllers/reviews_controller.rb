@@ -4,9 +4,11 @@ class ReviewsController < ApplicationController
 
     def index 
         if @resource = Resource.find_by_id(params[:resource_id])
-            @reviews = @resource.reviews.includes(:user)
+            @pagy, @reviews = pagy(@resource.reviews.includes(:user), items: 9)
+            #eager load user with the review because we are accessing all user reviews
         else  
             @pagy, @reviews = pagy(Review.all.includes(:user, :resource), items: 9)
+            #eager load user and resource with the reviews because we are accessing all user reviews
         end
     end
 
