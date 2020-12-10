@@ -1,47 +1,12 @@
 <h1><%= index_review_header %> </h1>
 
-<!-- Container -->
+
 <div class="container">
     <div class="row"> 
         <% @reviews.each do |r| %>
-        <!-- Card -->
-        <div class="col-md-4 border-primary">
-            <div class="card h-100">
-            <!--Card image-->
-                <div class="view overlay">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
-                            alt="Card image cap">
-                    <a href="#!">
-                        <div class="mask rgba-white-slight"></div>
-                    </a>
-                </div>
-                <!--Card content-->
-                <div class="card-body">
-
-                        <!--Title-->
-                    <h4 class="card-title"><%= r.resource.site_name%></h4>
-                        <!--Text-->
-                    <p class="card-text"><%= truncate(r.comment) %></p>
-                    <% r.stars.to_i.times do%>
-                        <i class="fas fa-star" style="color:orange;"></i>
-                    <% end%>
-                    <% (5 - r.stars.to_i).times do %>
-                        <i class="far fa-star" style="color:orange;" ></i>
-                    <% end%>  
-                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                    <%= link_to review_path(r.id) do%>
-                        <button type="button" class="btn btn-secondary">Read more</button>
-                    <% end %>
-                </div>
-                     <!--Card footer-->
-                <div class="card-footer">
-                    <small class="text-muted">Submitted <%=r.date_submitted %> by: <%= link_to r.user.username, user_path(r.user)%> </p></small>
-                </div>
-                        
-            </div>
-            
-        </div>
-        <!-- Card -->
+            <%= render partial: 'review_card', locals: {r: r} %>
         <% end %>
     </div>
 </div>
+
+<%== pagy_bootstrap_nav(@pagy)%>

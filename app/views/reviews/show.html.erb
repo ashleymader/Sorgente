@@ -1,10 +1,12 @@
 <h1>REVIEW SHOW PAGE</h1>
 
-<h2> <%=@review.resource.site_name %></h2>
-<h2> <%=@review.title %></h2>
-<p> <%=@review.comment %></p>
-<p> <%=@review.stars %> </p>
-<p> <%=@review.date_submitted %> </p>
+
+<div class="container">
+    <div class="row"> 
+        <%= render partial: 'review_card', locals: {r: @review} %>
+    </div>
+</div>
+
  <% if can? :update, @review %>
     <%= link_to edit_review_path(@review.id) do %>
         <button type="button" class="btn btn-primary">Edit Review</button> 
