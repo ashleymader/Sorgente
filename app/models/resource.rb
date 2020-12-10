@@ -14,7 +14,6 @@ class Resource < ApplicationRecord
   scope :lowest_rated, -> {left_joins(:reviews).group(:id).order('avg(stars) asc')}
 
   scope :most_reviewed, -> {joins(:reviews).group(:id).order('count(resources.id)desc')}
-#get '/user_albums/reviewed_albums', to: 'user_albums#reviewed_albums_index', as: 'reviewed_albums'
 
 
   def topic_attributes=(attributes)
@@ -46,7 +45,5 @@ class Resource < ApplicationRecord
   def self.most_reviewed 
     joins(:reviews).group(:id).order('count(resources.id)desc')
   end
-
-
 
 end

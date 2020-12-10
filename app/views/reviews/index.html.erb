@@ -35,7 +35,7 @@
                 </div>
                      <!--Card footer-->
                 <div class="card-footer">
-                    <small class="text-muted">Submitted <%=r.created_at.strftime("%m/%d/%Y") %> by: <%= link_to r.user.username, user_path(r.user)%> </p></small>
+                    <small class="text-muted">Submitted <%=r.date_submitted %> by: <%= link_to r.user.username, user_path(r.user)%> </p></small>
                 </div>
                         
             </div>

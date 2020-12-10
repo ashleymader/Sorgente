@@ -8,4 +8,9 @@ class Review < ApplicationRecord
 
   validates :resource_id, uniqueness: { scope: :user_id, message: "has already been reviewed by you"  }
 
+
+  def date_submitted 
+    self.created_at.strftime("%D")
+  end
+
 end

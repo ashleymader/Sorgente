@@ -12,8 +12,6 @@
         <% end %>
        
         <% user_review = r.reviews.find_by(user_id: current_user.id) %>
-        
-            
             <% if !user_review %>
                 <%= link_to new_resource_review_path(r.id) do%>
                     <button type="button" class="btn btn-primary">Add Review</button>

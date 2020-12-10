@@ -4,7 +4,7 @@
 <h2> <%=@review.title %></h2>
 <p> <%=@review.comment %></p>
 <p> <%=@review.stars %> </p>
-
+<p> <%=@review.date_submitted %> </p>
  <% if can? :update, @review %>
     <%= link_to edit_review_path(@review.id) do %>
         <button type="button" class="btn btn-primary">Edit Review</button> 

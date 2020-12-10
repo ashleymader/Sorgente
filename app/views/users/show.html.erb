@@ -21,7 +21,7 @@
   
    <li> <%= link_to r.title, review_path(r.id)%> -- <%= r.resource.site_name %>
    <br/>
-   <%= r.created_at.strftime("%B %d %Y,%l:%M%P") %>
+   <%= r.date_submitted %> ||
     <% end %>
 </ul>
 
