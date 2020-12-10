@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
     #boolean for if user is logged in. Hard truthy or falsey value 
     def logged_in?
-        !!current_user
+        !!session[:user_id]
     end
 
     #before action in app controller ensures they cannot view anything without logging in (unless displayed on main page or login/signup pages)

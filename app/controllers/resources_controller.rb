@@ -26,11 +26,7 @@ class ResourcesController < ApplicationController
     end
 
     def show
-        if rating = Review.where(resource_id: @resource).average(:stars)
-            @avg_rating = rating.round
-        else 
-            nil
-        end
+  
     end
 
     def index

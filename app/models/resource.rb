@@ -46,4 +46,12 @@ class Resource < ApplicationRecord
     joins(:reviews).group(:id).order('count(resources.id)desc')
   end
 
+  def avg_user_rating
+    if rating = Review.where(resource_id: self.id).average(:stars)
+       rating.round
+    else 
+        nil
+    end
+  end
+  
 end

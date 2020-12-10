@@ -23,15 +23,9 @@
     </div>
 </div>
 
-<% if !@avg_rating.nil? %>
+
     <span class="heading">User Rating</span>
-    <% @avg_rating.times do%>
-        <i class="fas fa-star" style="color:orange;"></i>
-    <% end%>
-    <% (5 - @avg_rating).times do %>
-        <i class="far fa-star" style="color:orange;" ></i>
-    <% end%>  <%= @avg_rating %> out of 5
-<% end %>
+    <%= render partial: "reviews/stars", locals: { stars: @resource.avg_user_rating } %>
 
 
  <% if can? :update, @resource %>
