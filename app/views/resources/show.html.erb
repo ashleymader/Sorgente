@@ -23,9 +23,12 @@
     </div>
 </div>
 
-
-    <span class="heading">User Rating</span>
-    <%= render partial: "reviews/stars", locals: { stars: @resource.avg_user_rating } %>
+    <% if @resource.avg_user_rating %>
+        <span class="heading">User Rating:</span>
+        <%= render partial: "reviews/stars", locals: { stars: @resource.avg_user_rating } %>
+    <% else %>
+        <p > Not yet rated </p>
+    <% end %>
 
 
  <% if can? :update, @resource %>
@@ -43,6 +46,8 @@
     <%end%>
 <% end %>
 
-<%= link_to resource_reviews_path(@resource.id) do%>
-    <button type="button" class="btn btn-primary">Read all Reviews</button>
-<%end%>
+<% if @resource.reviews %>
+    <%= link_to resource_reviews_path(@resource.id) do%>
+        <button type="button" class="btn btn-primary">Read all Reviews</button>
+    <%end%>
+<% end %>

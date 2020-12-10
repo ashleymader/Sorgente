@@ -16,4 +16,6 @@
 <%= %>
 
 
-<%= render partial: 'resources_index'%>
+<%= render @resources %>
+
+<%== pagy_bootstrap_nav(@pagy)%>

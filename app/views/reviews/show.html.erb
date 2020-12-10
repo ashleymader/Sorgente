@@ -3,11 +3,11 @@
 
 <div class="container">
     <div class="row"> 
-        <%= render partial: 'review_card', locals: {r: @review} %>
+        <%= render partial: 'review', locals: {review: @review} %>
     </div>
 </div>
 
- <% if can? :update, @review %>
+<% if can? :update, @review %>
     <%= link_to edit_review_path(@review.id) do %>
         <button type="button" class="btn btn-primary">Edit Review</button> 
     <% end %>
