@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
         if @resource = Resource.find_by_id(params[:resource_id])
             @reviews = @resource.reviews.includes(:user)
         else  
-            @reviews = Review.all.includes(:user, :resource)
+            @pagy, @reviews = pagy(Review.all.includes(:user, :resource), items: 9)
         end
     end
 

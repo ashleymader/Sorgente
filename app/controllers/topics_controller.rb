@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
 
     def index
-        @topics = Topic.all
+        @pagy, @topics = pagy(Topic.all, items: 20)
     end
 
     def show
@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
             redirect_to topics_path
             flash[:error] = "Topic with that ID does not exist"
         else  
-            @resources = @topic.resources
+            @pagy, @resources = pagy(@topic.resources, items: 15)
         end
     end
 
