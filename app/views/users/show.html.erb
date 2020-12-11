@@ -3,20 +3,24 @@
   </div>  
 
 <br / >
-  <h1>Welcome back, <%= @user.username %>!</h1>
+  <h1>Hello, <%= @user.username %>!</h1>
 <br/ >
 
+
+<% if @user.resources.any? %>
 <h2> Resources Submitted: </h2>
   <ul>
     <% @user.resources.each do |r| %>
       <li> <%= link_to r.site_name, resource_path(r.id)%></li>
     <% end %>
   </ul>
+<%end%>
 
+<% if @user.reviews.any? %>
 <h2> Resources Reviewed: </h2>
   <ul>
     <% @user.reviews.each do |r| %>
       <li> <%= link_to r.title, review_path(r.id)%> -- <%= r.resource.site_name %> - <%= r.date_submitted %> </li>
     <% end %>
   </ul>
-
+<% end %>
