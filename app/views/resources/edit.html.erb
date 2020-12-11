@@ -1,4 +1,38 @@
 <h1>Edit Resource!</h1>
 
-<%= render partial: 'form'%>
+<%# <%= render partial: 'form'%> 
+<!-- changed this from a partial to it's own form because the fields are no longer hidden after being set. User has the abilty to change all fields now instead of just the url and topic -->
 
+
+<%= render partial: 'layouts/errors', locals: {object: @resource} %>
+
+<%= form_for @resource do |f|%>
+
+    <div>
+        <%= f.label :Title %>
+        <%= f.text_area :site_name %>
+    </div> 
+
+    <div>
+        <%= f.label :Url %>
+        <%= f.text_area :url %>
+    </div>
+    <div>
+        <%= f.label :Description %>
+        <%= f.text_area :description %>
+    </div>
+
+    <div>
+        Select Topic: <%= f.collection_select :topic_id, Topic.all, :id, :name, include_blank: 'Select One' %>
+    </div>
+   
+    <div>
+        Create a Topic Not Listed:
+        <%= f.fields_for :topic do |t| %>
+            <%= t.text_field :name %>
+        <% end %>
+    </div>
+
+    <%= f.submit "Submit Resource", class: "btn btn-primary" %>
+
+<% end %>
