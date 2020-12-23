@@ -22,7 +22,7 @@ class User < ApplicationRecord
     def self.create_session_gitauth(auth)
         #receiving the omni auth hash from sessions controller as an argument and then processing the email
         find_or_create_by(email: auth[:info][:email]) do |u|
-            #setting username to email address without everything after the @
+            #setting username to the nickname in the github hash
             u.username = auth[:info][:nickname]
             #creates a password that we never see. It's then salted and hashed via has_secure_password and then sent to the db. 
             u.password = SecureRandom.hex
